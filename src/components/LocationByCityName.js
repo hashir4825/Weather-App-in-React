@@ -15,6 +15,3 @@ function fetchWeatherByCityName(city) {
   }
   
   export default fetchWeatherByCityName;
-
-   
- 
