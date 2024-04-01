@@ -1,51 +1,74 @@
-import React from 'react';
-import { useWeather } from './WeatherContext'; // Adjust the import path if needed
-import { UilTemperature, UilClouds, UilSun, UilSunset, UilWind,UilTear, UilLocationPoint } from "@iconscout/react-unicons";
+import React from "react";
+import { useWeather } from "./WeatherContext"; // Adjust the import path if needed
+import {
+  UilTemperature,
+  UilClouds,
+  UilSun,
+  UilSunset,
+  UilWind,
+  UilTear,
+  UilLocationPoint,
+} from "@iconscout/react-unicons";
 
 const One = () => {
   const { weather } = useWeather();
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+  
   return (
-    <div className='p-4 m-4 bg-gradient-to-br from-blue-700 to-cyan-700'>
+    <div  style={{ backgroundImage: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }} className="p-7 m-7">
       {weather ? (
         <>
-          <div className="flex flex-col space-y-2 text-white text-left">
-            <div className="flex text-md items-center">
-              <UilLocationPoint size={19} className="mr-1" />
-              City: {weather.name}
+          <div className="text-center text-lg text-white">
+            {new Date(weather.dt * 1000).toLocaleDateString("en-US", {
+              weekday: "long",
+            })}
+            , {new Date(weather.dt * 1000).toLocaleDateString()}{" "}
+            {new Date(weather.dt * 1000).toLocaleTimeString()}
+          </div>
+          <div className="flex justify-between text-white text-lg items-center mt-12">
+            <div className="text-4xl">{weather.name}</div>
+            <div className="text-4xl">{weather.main.temp}°C</div>
+          </div>
+
+          <div className="flex flex-col justify-center items-center m-4 p-4">
+            <div>
+              <img
+                src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
+                alt="Weather Icon"
+                className="h-25 w-20"
+              />
             </div>
-            <div className="flex text-md items-center">
-              <UilClouds size={19} className="mr-1" />
-              <img src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`} alt="Weather Icon" className="mr-1" />
-              Description: {weather.weather[0].description}
+            <div className="text-white text-lg">
+            Description: {capitalizeFirstLetter(weather.weather[0].description)}
             </div>
-            <div className="flex text-md items-center">
-              <UilTemperature size={19} className="mr-1" />
-              Maximum Temperature: {weather.main.temp_max}°C
+          </div>
+          <div className="flex justify-between text-white text-md items-center mt-12">
+            <div className="flex flex-col items-center">
+              <UilSunset size={24} className="mr-1" />
+              <span>
+                {new Date(weather.sys.sunset * 1000).toLocaleTimeString()}
+              </span>
             </div>
-            <div className="flex text-md items-center">
-              <UilTemperature size={19} className="mr-1" />
-              Minimum Temperature: {weather.main.temp_min}°C
+            <div className="flex flex-col items-center">
+              <UilSun size={24} className="mr-1" />
+              <span>
+                {new Date(weather.sys.sunrise * 1000).toLocaleTimeString()}
+              </span>
             </div>
-            <div className="flex text-md items-center">
-              <UilTemperature size={19} className="mr-1" />
-              Real feel: {weather.main.feels_like}°C
+            <div className="flex flex-col items-center">
+              <UilTear size={24} className="mr-1" />
+              <span>{weather.main.humidity}%</span>
             </div>
-            <div className="flex text-md items-center">
-              <UilTear size={19} className="mr-1" />
-              Humidity: {weather.main.humidity}%
+            <div className="flex flex-col items-center">
+              <UilWind size={24} className="mr-1" />
+              <span>{weather.main.feels_like}°C</span>
             </div>
-            <div className="flex text-md items-center">
-              <UilWind size={19} className="mr-1" />
-              Wind: {weather.wind.speed} km/h
-            </div>
-            <div className="flex text-md items-center">
-              <UilSun size={19} className="mr-1" />
-              Sunrise: {new Date(weather.sys.sunrise * 1000).toLocaleTimeString()}
-            </div>
-            <div className="flex text-md items-center">
-              <UilSunset size={19} className="mr-1" />
-              Sunset: {new Date(weather.sys.sunset * 1000).toLocaleTimeString()}
+            <div className="flex flex-col items-center">
+              <UilLocationPoint size={24} className="mr-1" />
+              <span>{weather.wind.speed} km/h</span>
             </div>
           </div>
         </>
@@ -54,6 +77,6 @@ const One = () => {
       )}
     </div>
   );
-}
+};
 
 export default One;

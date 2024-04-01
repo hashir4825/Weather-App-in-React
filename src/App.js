@@ -1,31 +1,31 @@
-import React from 'react';
-import { WeatherProvider } from './components/WeatherContext';
-import Three from './components/Three';
+import React from "react";
+import { WeatherProvider } from "./components/WeatherContext";
 import Four from "./components/Four";
 import SearchBar from "./components/SearchBar";
-import TemperatureAndDetails from "./components/TemperatureAndDetails";
-import One from './components/One';
-import Five from './components/Five';
+import One from "./components/One";
+import Five from "./components/Five";
+import pic from './logo.jpg';
 
+// Inside your component
+const styles = {
+  body: {
+    backgroundImage: `url(${pic})`,
+    /* Add any other styles you want for the body */
+  }
+};
 function App() {
-
   return (
-    <WeatherProvider>
-<div className="mx-auto max-w-screen-lg mt-4 py-5 px-32 bg-gradient-to-br from-blue-700 to-cyan-700 h-fit shadow-xl shadow-gray-400">
+    <WeatherProvider><div style={ { width: '800px', margin: '0 auto', ...styles.body, backgroundImage: ' linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }} className="mt-4 py-5 px-16 h-fit shadow-xl shadow-gray-400">
+
+
+
+
 
         <SearchBar />
-        {/* <CurrentLocation /> */}
-        <div className="App flex flex-row bg-yellow-300">
-          <div className="w-1/2 p-4">
-            <One />
-          </div>
-          <div className="w-1/2 p-4">
-            <Three />
-          </div>
-        </div>
-        <Four />
-        <TemperatureAndDetails/>
+        <One />
         <Five />
+
+        <Four />
       </div>
     </WeatherProvider>
   );
