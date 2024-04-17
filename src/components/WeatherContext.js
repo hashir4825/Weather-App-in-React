@@ -8,7 +8,7 @@ export const useWeather = () => {
   return useContext(WeatherContext);
 };
 
-export const WeatherProvider = ({ children }) => {
+const WeatherProvider = ({ children }) => {
   const [weather, setWeather] = useState(null);
   const [fiveDayForecast, setFiveDayForecast] = useState(null);
 
@@ -32,3 +32,5 @@ export const WeatherProvider = ({ children }) => {
     </WeatherContext.Provider>
   );
 };
+
+export default WeatherProvider;

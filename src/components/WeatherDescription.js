@@ -10,17 +10,17 @@ import {
   UilLocationPoint,
 } from "@iconscout/react-unicons";
 
-const One = () => {
+
+const WeatherDescription = () => {
   const { weather } = useWeather();
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
-
   return (
     <div
       style={{
-        backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+        // backgroundImage: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       }}
       className="p-7 m-7"
     >
@@ -89,4 +89,4 @@ const One = () => {
   );
 };
 
-export default One;
+export default WeatherDescription;

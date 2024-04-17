@@ -1,7 +1,7 @@
 import React from 'react';
 import { useWeather } from './WeatherContext';
 
-const Five = () => {
+const FiveDayDescription = () => {
   const { fiveDayForecast } = useWeather();
 
   return (
@@ -18,7 +18,7 @@ const Five = () => {
                   width="50"
                   height="50"
                 />
-                <p className="text-white text-1xl">{day.weather[0].description.charAt(0).toUpperCase() + day.weather[0].description.slice(1)}</p>
+                <p className="text-white text-lg">{day.weather[0].description.charAt(0).toUpperCase() + day.weather[0].description.slice(1)}</p>
               </div>
             ))}
           </div>
@@ -28,4 +28,4 @@ const Five = () => {
   );
 }
 
-export default Five;
+export default FiveDayDescription;
