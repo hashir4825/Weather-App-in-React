@@ -1,5 +1,4 @@
 import React, { useEffect ,useState} from "react";
-// import { WeatherProvider, useWeather } from "./components/WeatherContext";
 import { useWeather } from "./components/WeatherContext";
 import SearchBar from "./components/SearchBar";
 import WeatherDescription from "./components/WeatherDescription";
@@ -65,7 +64,6 @@ function App() {
   return (
     <div
       style={{
-        width: '800px',
         margin: '0 auto',
         position: 'relative',
         backgroundImage: backgroundPic,
@@ -79,7 +77,10 @@ function App() {
       }}
       className="mt-4 py-5 px-16 h-fit shadow-xl shadow-gray-400"
     >
-      {/* <div
+      {
+      // If backgroundBlendMode was not used then the picture can be adjusted by the following code whih is overlay and it means that the div of color black will be placed on the main div
+
+      /* <div
         style={{
           // position: 'absolute',
           // top: 0,

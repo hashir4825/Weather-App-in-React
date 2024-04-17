@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { useWeather } from './WeatherContext';
+import React, { useState } from "react";
+import { useWeather } from "./WeatherContext";
 
 const SearchBar = () => {
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState("");
   const { fetchWeather, fetchWeatherForFiveDays } = useWeather();
 
   const handleSearch = () => {
-    if (typeof city === 'string' && city.trim() !== '') {
+    if (typeof city === "string" && city.trim() !== "") {
       fetchWeather(city.trim());
       fetchWeatherForFiveDays(city.trim()); // Fetch five-day forecast along with current weather
     } else {
-      console.error('Invalid city name:', city);
+      console.error("Invalid city name:", city);
       // Handle invalid city name (e.g., show an error message)
     }
   };
@@ -18,16 +18,16 @@ const SearchBar = () => {
   return (
     <div className="max-w-md mx-auto p-2">
       <div className="relative flex items-center">
-      <input
-  type="search"
-  id="default-search"
-  className="block w-full p-2 text-md text-gray-900 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none"
-  placeholder="Search city here..."
-  value={city}
-  onChange={(e) => setCity(e.target.value)}
-  required
-  style={{ textTransform: 'capitalize' }}
-/>
+        <input
+          type="search"
+          id="default-search"
+          className="block w-full p-2 text-md text-gray-900 border border-gray-300 rounded-sm placeholder-gray-400 focus:outline-none"
+          placeholder="Search city here..."
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          required
+          style={{ textTransform: "capitalize" }}
+        />
 
         <button
           type="button" // Prevents form submission

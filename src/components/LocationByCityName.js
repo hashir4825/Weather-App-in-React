@@ -2,8 +2,7 @@ function fetchWeatherByCityName(city) {
   const apiKey = "baafed74ddd9f05c52673a3bd435bb33";
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-  )
-    .then((response) => {
+  ).then((response) => {
       if (!response.ok) {
         throw new Error("City not found. Please enter a valid city name.");
       }
@@ -18,5 +17,4 @@ function fetchWeatherByCityName(city) {
       return null;
     });
 }
-
 export default fetchWeatherByCityName;

@@ -25,7 +25,6 @@ const WeatherProvider = ({ children }) => {
       setFiveDayForecast(forecastData);
     }
   };
-
   return (
     <WeatherContext.Provider value={{ weather, fiveDayForecast, fetchWeather, fetchWeatherForFiveDays }}>
       {children}
